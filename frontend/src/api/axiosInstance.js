@@ -1,0 +1,22 @@
+import axios from 'axios';
+
+const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+// Automatically attach JWT token if logged in
+axiosInstance.interceptors.request.use((config) => {
+  const userInfo = localStorage.getItem('vedicUser');
+  if (userInfo) {
+    const { token } = JSON.parse(userInfo);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  }
+  return config;
+});
+
+export default axiosInstance;

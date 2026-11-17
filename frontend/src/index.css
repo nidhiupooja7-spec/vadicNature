@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Vedic Nature theme tokens (Tailwind v4 reads these from @theme).
+   cream/charcoal match index.html body; the rest are placeholders, adjust to brand. */
+@theme {
+  --color-vedic-cream: #FAF9F6;
+  --color-vedic-charcoal: #1C1C1C;
+  --color-vedic-green: #2F4A3A;
+  --color-vedic-green-dark: #1F3327;
+  --color-vedic-gold: #B8963E;
+  --color-vedic-sand: #EFE9DC;
+  --color-vedic-muted: #6B6B6B;
+
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Hero slider text entrance */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-fade-up {
+  animation: hero-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up {
+    animation: none;
+  }
+}
+
+/* Mobile navbar drawer entrance */
+@keyframes navbar-drop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes navbar-item-in {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.navbar-drawer {
+  animation: navbar-drop 0.25s ease-out both;
+}
+.navbar-item {
+  animation: navbar-item-in 0.3s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .navbar-drawer,
+  .navbar-item {
+    animation: none;
+  }
+}
